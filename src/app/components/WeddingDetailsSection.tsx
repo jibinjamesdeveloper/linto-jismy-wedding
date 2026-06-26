@@ -58,7 +58,7 @@ function Countdown() {
 }
 
 const events = [
-  { time: '9:00 AM',   title: 'Holy Mass & Wedding Ceremony', desc: 'Lourdes Matha Church, Mampuzhakary, Kerala', icon: '⛪' },
+  { time: '11:00 AM',   title: 'Holy Mass & Wedding Ceremony', desc: 'Lourdes Matha Church, Mampuzhakary, Kerala', icon: '⛪' },
   { time: '12:30 PM',  title: 'Wedding Reception',             desc: 'Lourdes Matha Church Parish Hall, Mampuzhakary, Kerala', icon: '🥂' },
   { time: '7:00 PM',   title: 'Evening Celebration',           desc: 'An evening of joy, dance, and cherished moments with loved ones', icon: '✨' },
 ];
