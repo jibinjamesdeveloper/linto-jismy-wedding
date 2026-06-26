@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Ultra Premium Palette ── */
+:root {
+  /* Backgrounds - warm silk tones */
+  --cream:        #fdf6ee;
+  --ivory:        #f9f2e8;
+  --parchment:    #f4ead8;
+  --warm-white:   #fff9f3;
+
+  /* Florals - dusty rose to deep burgundy */
+  --petal-light:  #fce8e4;
+  --blush:        #f0bfb8;
+  --rose:         #d98a80;
+  --dusty-rose:   #c47068;
+  --deep-rose:    #7a3535;
+  --burgundy:     #5c2020;
+
+  /* Gold - champagne to antique */
+  --champagne:    #f0dfc0;
+  --gold-light:   #deb887;
+  --gold:         #b8904a;
+  --gold-dark:    #8a6830;
+  --bronze:       #6b4f2a;
+
+  /* Text */
+  --text-dark:    #2c1a1a;
+  --text-mid:     #6b4040;
+  --text-soft:    #a07878;
+  --text-muted:   #c8a8a8;
+
+  /* Borders */
+  --border-gold:  rgba(184,144,74,0.22);
+  --border-rose:  rgba(212,138,128,0.25);
+}
+
+@layer base {
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--cream);
+    color: var(--text-dark);
+    font-family: 'Lato', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  ::selection { background: rgba(240,191,184,0.35); color: var(--burgundy); }
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--ivory); }
+  ::-webkit-scrollbar-thumb { background: var(--blush); border-radius: 3px; }
+}
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s cubic-bezier(0.22,1,0.36,1), transform 1s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-36px);
+  transition: opacity 1s cubic-bezier(0.22,1,0.36,1), transform 1s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(36px);
+  transition: opacity 1s cubic-bezier(0.22,1,0.36,1), transform 1s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+/* ── Petal fall ── */
+@keyframes petal-fall {
+  0%   { transform: translateY(-40px) rotate(0deg); opacity: 0; }
+  8%   { opacity: 0.65; }
+  85%  { opacity: 0.3; }
+  100% { transform: translateY(110vh) translateX(60px) rotate(700deg); opacity: 0; }
+}
+
+/* ── Scan line (scroll cue) ── */
+@keyframes scan-down {
+  0%   { top: -100%; }
+  100% { top: 110%; }
+}
+
+/* ── Gold shimmer ── */
+@keyframes gold-shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+.gold-text {
+  background: linear-gradient(110deg, #b8904a 10%, #f0dfc0 40%, #b8904a 58%, #deb887 80%, #b8904a 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gold-shimmer 5s linear infinite;
+}
+
+/* ── Gallery hover ── */
+.gallery-item img { transition: transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+.gallery-item:hover img { transform: scale(1.06); }
+
+/* ── Petal background texture ── */
+.bg-petal-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse cx='40' cy='20' rx='5' ry='9' fill='%23d98a80' fill-opacity='0.04' transform='rotate(0 40 40)'/%3E%3Cellipse cx='40' cy='20' rx='5' ry='9' fill='%23d98a80' fill-opacity='0.04' transform='rotate(60 40 40)'/%3E%3Cellipse cx='40' cy='20' rx='5' ry='9' fill='%23d98a80' fill-opacity='0.04' transform='rotate(120 40 40)'/%3E%3C/svg%3E");
+}
+
+/* ── Page entrance ── */
+@keyframes page-enter { from { opacity: 0; } to { opacity: 1; } }
+main { animation: page-enter 0.7s ease forwards; }
+
+@media (max-width: 760px) {
+  section {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    max-width: 100%;
+  }
+
+  h1,
+  h2,
+  h3,
+  p,
+  span,
+  a,
+  button {
+    overflow-wrap: anywhere;
+  }
+
+  [style*="letter-spacing: 0.5em"],
+  [style*="letter-spacing: 0.46em"],
+  [style*="letter-spacing: 0.44em"],
+  [style*="letter-spacing: 0.42em"],
+  [style*="letter-spacing: 0.38em"],
+  [style*="letter-spacing: 0.32em"],
+  [style*="letter-spacing: 0.3em"] {
+    letter-spacing: 0.18em !important;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding-top: 4.8rem !important;
+    padding-bottom: 4.4rem !important;
+  }
+
+  nav {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
